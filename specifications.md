@@ -201,3 +201,10 @@ of the payload is dependent on RFtap fields, specifically the RFtap
 Data Link Type (DLT) field.
 
 ```
+
+<div class="imgcap">
+<img src="/assets/rftap/rftap_sample_pcap.png">
+<div class="thecap">Sample RFtap packet, encapsulating a Radiotap packet</div>
+</div>
+
+Download [Sample RFtap pcap file](/assets/rftap/rftap_sample.pcap)
