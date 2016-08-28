@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+RFtap is a simple protocol designed to provide Radio Frequency (RF) metadata about packets.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
+Read the [RFtap introduction](/).
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+Read the [RFtap specifications](/specifications/).
+
+You can find the source code for this site at
+{% include icon-github.html username="rftap" %} /
+[rftap.github.io](https://github.com/rftap/rftap.github.io)

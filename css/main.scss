@@ -37,3 +37,15 @@ $on-laptop:        800px;
 
 // Import partials from the `minima` theme.
 @import "minima";
+
+.imgcap img {
+  border: 1px solid #999;
+  max-width: 100%;
+}
+.imgcap {
+  color: #555;
+  font-size: 14px;
+  text-align: center;
+  /*margin: 0 0 30px;*/
+  margin-bottom: $spacing-unit;
+}

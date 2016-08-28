@@ -1,0 +1,203 @@
+---
+layout: page
+title: "Specifications"
+permalink: /specifications/
+---
+
+You may prefer to read the gentler [RFtap introduction](/) first :smile:
+
+```
+RFtap Protocol Specifications
+
+RFtap is a simple protocol designed to provide Radio Frequency (RF)
+metadata about packets.
+
+
+RFtap Packet Structure
+
++---------------------------+
+|           Magic           |
+|         (4 Octets)        |
++---------------------------+
+|          Length32         |
+|         (2 Octets)        |
++---------------------------+
+|           Flags           |
+|         (2 Octets)        |
++---------------------------+
+|   RFtap optional fields   |
+.                           .
+.                           .
+.                           .
++---------------------------+
+|          Payload          |
+.                           .
+.                           .
+.                           .
+
+
+RFtap Description
+
+All values are little-endian.
+
+The magic field is a fixed signature used to identify the packet. The 
+signature is: 52 46 74 61 (hex), i.e. the ASCII sequence "RFta".
+
+The length32 field indicates how many 32-bit words are used by the
+entire RFtap header including the optional fields.
+
+The flags field is a bitfield indicating the presence of following RFtap
+fields (similar to radiotap "present" flags), or in few cases directly
+the value of boolean fields. The bitfield ordering starts from LSB.
+
+Flags bitfield:
+
+0 Data Link Type (DLT) field is present
+1 Frequency field is present
+2 Nominal frequency field is present
+3 Frequency offset field is present
+4 The power units are dBm (boolean)
+5 Signal power field is present
+6 Noise power field is present
+7 SNR field is present
+8 Signal quality field is present
+9 The time standard is UNIX time (boolean)
+10 Time field is present
+11 Duration of packet field is present
+12 Location field is present
+13 Reserved, must be 0
+14 Reserved, must be 0
+15 Reserved, must be 0
+
+Field 0: Data Link Type
+Field name: dlt
+
+The Data Link Type of the payload.
+32 bit little endian integer.
+Example: a Wi-Fi payload would have a DLT of 105.
+Note: like all RFtap fields, this field is *optional*, and may not be
+present for protocols that don't have an associated data link type.
+Ref: http://www.tcpdump.org/linktypes.html
+
+Field 1: Frequency
+Field name: freq
+
+The actual (measured) carrier frequency, in Hertz.
+64 bit double precision IEEE 754 floating point, little endian.
+Example: a Wi-Fi packet received on channel 1 with 13ppm error would 
+have the value of 2412.031356e6.
+Ref: https://en.wikipedia.org/wiki/Carrier_frequency
+
+Field 2: Nominal Frequency
+Field name: nomfreq
+
+The nominal carrier frequency, in Hertz (this is the ideal frequency, 
+ignoring frequency errors)
+64 bit double precision IEEE 754 floating point, little endian.
+Example: a Wi-Fi packet received on channel 1 would have the value of
+2.412e9, regardless of the carrier frequency offset.
+
+Field 3: Frequency Offset
+Field name: freqofs
+
+The Carrier frequency offset, in Hertz.
+64 bit double precision IEEE 754 floating point, little endian.
+Example: a Wi-Fi packet received on channel 1 with 13ppm error would 
+have the value of 3.1356e5.
+Ref: https://en.wikipedia.org/wiki/Carrier_frequency_offset
+
+Field 4: Power measurement units (boolean flag)
+Field name: isdbm
+
+True (1): the power units are dBm.
+False (0): the power units are dB (this is also known as unreferenced
+or uncalibrated power level).
+Ref: https://en.wikipedia.org/wiki/Decibel
+https://en.wikipedia.org/wiki/DBm
+
+Field 5: Signal Power
+Field name: power
+
+Power of the signal, in dB or dBm units.
+32 bit single precision IEEE 754 floating point, little endian.
+
+Field 6: Noise Power
+Field name: noise
+
+Power of the noise, in dB or dBm units.
+32 bit single precision IEEE 754 floating point, little endian.
+
+Field 7: Signal-to-Noise
+Field name: snr
+
+Signal-to-Noise (SNR) ratio of the signal, in dB.
+32 bit single precision IEEE 754 floating point, little endian.
+Ref: https://en.wikipedia.org/wiki/Signal-to-noise_ratio
+
+Field 8: Signal Quality
+Field name: qual
+
+Signal quality, in arbitrary units from 0.0 (worst) to 1.0 (best).
+32 bit single precision IEEE 754 floating point, little endian.
+This is sometimes used as a substitute for SNR, when accurate power
+and/or noise level estimation is difficult to implement.
+
+Field 9: Time standard (boolean flag)
+Field name: isunixtime
+
+True (1): the time standard is unix time.
+False (0): the time standard is not defined.
+Ref: https://en.wikipedia.org/wiki/Unix_time
+
+Field 10: Time
+Field name: timeint
+Field name: timefrac
+Computed field name: time (the sum of the two fields)
+
+The event time (the time the packet was received).
+It consists of exactly two (2) consecutive 64 bit double precision
+IEEE 754 floating point, little endian.
+The first number represents the integer number of seconds since the
+time epoch.
+The second number represents the fractional number of seconds since
+the time epoch, between 0 (inclusive) to 1 (exclusive).
+Note that the timestamp is generated by the receiver clock (also 
+called MAC or PHY timestamp), which may not be synchronized to the
+computer clock.
+Ref: https://en.wikipedia.org/wiki/Epoch_(reference_date)
+
+Field 11: Duration
+Field name: duration
+
+The duration of the event (the packet), in seconds.
+64 bit single precision IEEE 754 floating point, little endian.
+
+Field 12: Location
+Field name: lat
+Field name: lon
+Field name: alt
+
+The location of the receiver.
+It consists of exactly three (3) consecutive 64 bit double precision
+IEEE 754 floating point, little endian.
+The first value is the latitude of receiver (-90..90 degrees), using
+WGS 84 datum.
+The second value is the longitude of receiver (-180..180 degrees), using
+WGS 84 datum.
+The third value is the altitude of receiver, in meters, using WGS 84
+datum.
+Ref: https://en.wikipedia.org/wiki/World_Geodetic_System
+
+Future extensions:
+
+The protocol may be extended in the future by having extra words after
+the last RFtap optional field. Those extra words will be accounted for
+in the RFtap length32 field.
+
+Payload
+
+The encapsulated payload follows after the RFtap header. Interpretation
+of the payload is dependent on RFtap fields, specifically the RFtap 
+Data Link Type (DLT) field.
+
+```
