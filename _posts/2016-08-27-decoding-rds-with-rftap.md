@@ -81,11 +81,11 @@ Alternatively, if the packet type isn't listed in the [DLT list](http://www.tcpd
 
 ## Receiving the Packets in Wireshark
 
-Upon running the modified flowgraph (and tuning to an RDS-capable FM station), RFtap packets should start flowing to localhost interface (127.0.0.1). We're ready to fire up wireshark:
+Upon running the modified flowgraph (and tuning to an RDS-capable FM station), RFtap packets should start flowing to localhost interface (127.0.0.1). Install [Wireshark](https://www.wireshark.org/) version 2.3 or higher. We're ready to fire up wireshark:
 
 ```
 $ wireshark -v
-Wireshark 2.3.0 (v2.3.0rc0-000-00000000 from unknown)
+Wireshark 2.3.0
 
 $ wireshark -i lo -k
 ```
@@ -233,6 +233,8 @@ Run analytics on all RDS and TMC messages received, etc.
 ## Conclusions
 
 In this post we've shown the basic use of the RFtap protocol, including how to generate and process RFtap packets and how to add support to a new protocol in Wireshark. We've demonstrated the benefits RFtap can provide in bridging SDR platforms such as GNU radio and network analysis tools such as Wireshark.
+
+Ready for more? Read [Using RFtap to Detect Wi-Fi MAC Spoofing]({% post_url 2016-09-01-rftap-wifi %}).
 
 ## Links
 

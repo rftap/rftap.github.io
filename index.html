@@ -14,7 +14,7 @@ layout: default
   <h2>Posts</h2>
 
   <ul class="post-list">
-    {% for post in site.posts reversed limit:1 %}
+    {% for post in site.posts reversed limit:2 %}
       <li>
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
