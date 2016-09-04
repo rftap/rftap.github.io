@@ -8,7 +8,7 @@ In this post we'll use [GNU Radio](http://gnuradio.org/)'s [Wi-Fi receiver](http
 
 ## What is RFtap?
 
-RFtap is a simple protocol designed to provide RF (Radio Frequency) metadata about packets, such as:
+[RFtap](/) is a simple protocol designed to provide RF (Radio Frequency) metadata about packets, such as:
 
 * Accurate signal and noise power
 * Accurate timing and phase information
