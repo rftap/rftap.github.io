@@ -36,7 +36,7 @@ Radio Data System (RDS) is a digital sub-channel in commercial FM radio broadcas
 </div>
 
 We'll start with the excellent GNU Radio FM/RDS receiver.
-You'll need to install [GNU Radio from source](http://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource) (I followed [these instructions](https://github.com/gnuradio/pybombs/blob/master/README.md)), install GNU Radio's [RDS receiver (gr-rds)](https://github.com/jonathanbrucker/gr-rds) and [gr-rftap](https://github.com/rftap/gr-rftap). You'll also need some SDR hardware, such as the [RTL-SDR](http://www.rtl-sdr.com/about-rtl-sdr/) receiver.
+You'll need to install [GNU Radio from source](http://gnuradio.org/redmine/projects/gnuradio/wiki/InstallingGRFromSource) (I followed [these instructions](https://github.com/gnuradio/pybombs/blob/master/README.md)), install GNU Radio's [RDS receiver (gr-rds)](https://github.com/bastibl/gr-rds) and [gr-rftap](https://github.com/rftap/gr-rftap). You'll also need some SDR hardware, such as the [RTL-SDR](http://www.rtl-sdr.com/about-rtl-sdr/) receiver.
 
 [Presentation about GNU Radio RDS receiver (video and slides)](https://archive.fosdem.org/2015/schedule/event/sdr_rds_tmc/)
 
