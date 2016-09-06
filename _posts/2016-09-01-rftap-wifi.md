@@ -144,7 +144,7 @@ Notice that every device has a unique frequency offset identifying it, even at r
 
 In this post we have shown how to use RFtap to preserve RF metadata from GNU Radio, and how to use RF metadata such as Carrier Offset to uniquely identify devices regardless of the content of their packets. We’ve demonstrated the benefits RFtap can provide in bridging SDR platforms such as GNU radio and network analysis tools such as Wireshark.
 
-The modified flowgraph is available in [gr-rftap/examples](https://github.com/rftap/gr-rftap/tree/master/examples).
+The modified Wi-Fi flowgraph is available in [gr-rftap/examples](https://github.com/rftap/gr-rftap/tree/master/examples).
 
 ## Future Study
 
