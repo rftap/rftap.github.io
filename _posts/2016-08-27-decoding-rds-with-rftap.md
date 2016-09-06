@@ -234,6 +234,8 @@ Run analytics on all RDS and TMC messages received, etc.
 
 In this post we've shown the basic use of the RFtap protocol, including how to generate and process RFtap packets and how to add support to a new protocol in Wireshark. We've demonstrated the benefits RFtap can provide in bridging SDR platforms such as GNU radio and network analysis tools such as Wireshark.
 
+The modified RDS flowgraph and lua dissector are available in [gr-rftap/examples](https://github.com/rftap/gr-rftap/tree/master/examples).
+
 Ready for more? Read [Using RFtap to Detect Wi-Fi MAC Spoofing]({% post_url 2016-09-01-rftap-wifi %}).
 
 ## Links

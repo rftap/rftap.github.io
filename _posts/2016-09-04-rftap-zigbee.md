@@ -66,6 +66,8 @@ class blk(gr.basic_block):
         self.message_port_pub(pmt.intern('out'), pduout)
 ```
 
+The modified Zigbee flowgraph is available in [gr-rftap/examples](https://github.com/rftap/gr-rftap/tree/master/examples).
+
 The demo uses the GNU Radio [802.15.4 Zigbee module](https://www.wime-project.net/features/#zigbee), part of the [WiME project](https://www.wime-project.net/):
 
 <div class="imgcap">

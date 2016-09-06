@@ -98,9 +98,9 @@ Or as a rudimentary plot, again in real-time:
 
 ```
 $ tshark -i lo -q -l -Y 'wlan.ta' -T fields -e wlan.ta -e rftap.freqofs | \
-gawk '{printf("%s %*s\n",$1,($2+300000)/20000,"*")}'
+gawk '{printf("%s %*s\n",$1,($2+50000)/3000,"*")}'
 
-# scale: 1 text column is 20kHz
+# scale: 1 text column is 3kHz
 
 3a:34:52:c4:69:b8               *
 3a:34:52:c4:69:b8               *
@@ -143,6 +143,8 @@ Notice that every device has a unique frequency offset identifying it, even at r
 ## Summary
 
 In this post we have shown how to use RFtap to preserve RF metadata from GNU Radio, and how to use RF metadata such as Carrier Offset to uniquely identify devices regardless of the content of their packets. We’ve demonstrated the benefits RFtap can provide in bridging SDR platforms such as GNU radio and network analysis tools such as Wireshark.
+
+The modified flowgraph is available in [gr-rftap/examples](https://github.com/rftap/gr-rftap/tree/master/examples).
 
 ## Future Study
 
